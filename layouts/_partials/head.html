@@ -8,7 +8,7 @@
 <!-- Tailwind output -->
 {{ $css := resources.Get "css/output.css" }}
 
-{{ if hugo.IsServer }}
+{{ if not hugo.IsServer }}
 {{ $css = $css | minify | fingerprint }}
 {{ end }}
 
