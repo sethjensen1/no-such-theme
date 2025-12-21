@@ -1,0 +1,22 @@
+{{/*
+Params:
+
+- resource_folder: glob pointing to images folder relative to `assets` directory (e.g. "images/mygallery")
+*/}}
+
+{{ $folder := .Get "resource_folder" }}
+
+{{- $trimmed_resource_folder := (strings.TrimRight "/" $folder) }}
+
+{{/* TODO: get webp, png, jpeg, etc */}}
+{{/* TODO: Generate thumbnails */}}
+{{- $images := resources.Match (printf "%s/*.jpg" $trimmed_resource_folder) }}
+
+<ul class="gallery">
+    {{- range $index, $image := $images }}
+	<li id="image-{{ $index }}" class="wide">
+        <a href="#image-{{ $index }}" class="zoomin" title="Zoom In"><img width="{{ $image.Width }}" height="{{ $image.Height }}" src="{{ $image.RelPermalink }}" alt="" title="" loading="lazy" /></a>
+        <a href="#close" class="zoomout" title="Zoom Out" autofocus="true"><img width="{{ $image.Width }}" height="{{ $image.Height }}" src="{{ $image.RelPermalink }}" alt="" title="" loading="lazy" /></a>
+    </li>
+    {{- end }}
+</ul>

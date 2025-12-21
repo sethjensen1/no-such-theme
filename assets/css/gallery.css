@@ -1,0 +1,129 @@
+/**
+ * Simple Gallery, V4b (WIP) — by Bramus
+ *
+ * V1: https://codepen.io/bramus/pen/pogLgwZ
+ * V2: https://codepen.io/bramus/pen/abdjLBx
+ * V3: https://codepen.io/bramus/pen/eYJjGgQ
+ * V4: https://codepen.io/bramus/pen/GRoaXQJ
+ *
+ * https://www.bram.us/2020/07/28/simple-image-gallery-with-display-grid-and-object-fit-cover/
+ */
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+ul.gallery {
+	--numcolumns: 4;
+	--gap: 0.25em;
+	--size: calc(100vw / var(--numcolumns));
+	display: grid;
+	grid-template-columns: repeat(var(--numcolumns), 1fr);
+	
+	grid-template-rows: auto;
+	gap: var(--gap);
+	align-items: stretch;
+	
+	list-style: none;
+}
+
+ul.gallery > li {
+	display: block;
+	height: calc(var(--size) - var(--gap));
+	position: relative;
+}
+
+ul.gallery > li.wide {
+	grid-column: span 2;
+}
+
+ul.gallery > li.wider {
+	grid-column: span 3;
+}
+
+ul.gallery > li.high {
+	grid-row: span 2;
+	height: auto; /* to undo the height */
+}
+
+ul.gallery > li > a.zoomout {
+	display: none;
+}
+
+ul.gallery > li > a,
+ul.gallery > li > a > img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+ul.gallery > li > a.zoomin:hover::after,
+ul.gallery > li > a.zoomin:focus::after {
+	content: '';
+	display: block;
+	background: rgba(255, 255, 255, 0.2) url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMSIgY3k9IjExIiByPSI4Ii8+PGxpbmUgeDE9IjIxIiB4Mj0iMTYuNjUiIHkxPSIyMSIgeTI9IjE2LjY1Ii8+PGxpbmUgeDE9IjExIiB4Mj0iMTEiIHkxPSI4IiB5Mj0iMTQiLz48bGluZSB4MT0iOCIgeDI9IjE0IiB5MT0iMTEiIHkyPSIxMSIvPjwvc3ZnPg==) no-repeat 50% 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+
+ul.gallery > li:focus-within,
+ul.gallery > li:target {
+	overflow: visible;
+	z-index: 1;
+}
+
+/* Make sure tile of active image is on top */
+ul.gallery > li:target {
+	z-index: 2;
+}
+
+/* Hide zoom in link when the tile is targetted */
+ul.gallery > li:target > a.zoomin {
+	display: none;
+}
+
+/* Show zoom out (close) link when the tile is targetted */
+ul.gallery > li:target > a.zoomout {
+	display: block;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	z-index: 12;
+}
+
+/* Stretch out the image */
+ul.gallery > li > a.zoomout > img {
+	object-fit: contain;
+	padding: 1vw;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	z-index: 11;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+/* Put close link on top */
+ul.gallery > li:target > a.zoomout::after {
+	content: 'Click or hit ESC to close';
+	position: fixed;
+	right: 1vw;
+	bottom: 1vw;
+	font-size: 1rem;
+	color: #fff;
+	z-index: 12;
+} 

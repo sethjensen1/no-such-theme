@@ -7,12 +7,21 @@
 
 <!-- Tailwind output -->
 {{ $css := resources.Get "css/output.css" }}
+{{ $gallerycss := cond (.HasShortcode "gallery") (resources.Get "css/gallery.css") nil }}
 
 {{ if not hugo.IsServer }}
 {{ $css = $css | minify | fingerprint }}
+{{ if $gallerycss }}
+{{ $gallerycss := $gallerycss | minify | fingerprint }}
+{{ end}}
 {{ end }}
 
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+{{ if $gallerycss }}
+<link rel="stylesheet" href="{{ $gallerycss.RelPermalink }}" integrity="{{ $gallerycss.Data.Integrity }}">
+{{ end}}
+<!-- <link rel="preload" href="path-to-roman-subset.woff2" as="font" type="font/woff2" crossorigin> -->
 
 <link rel="canonical" href="{{ .Permalink }}" />
 
@@ -28,4 +37,10 @@
 
 {{ if and (not hugo.IsServer) .Site.Params.useGoogleAnalytics }}
 <!-- Global site tag (gtag.js) - Google Analytics -->
+{{ end }}
+
+{{ $galleryjs := cond (.HasShortcode "gallery") (resources.Get "js/gallery.js") nil }}
+
+{{ if $galleryjs }}
+<script defer async src="{{ $galleryjs.RelPermalink }}"></script>
 {{ end }}
