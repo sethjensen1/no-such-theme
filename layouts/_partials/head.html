@@ -1,0 +1,31 @@
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<link href="/images/favicon.ico" rel="icon" type="image/ico" />
+
+{{ $title := printf "%s | %s" (or .Title .Params.name) .Site.Title }}
+<title>{{ $title }}</title>
+
+<!-- Tailwind output -->
+{{ $css := resources.Get "css/output.css" }}
+
+{{ if hugo.IsServer }}
+{{ $css = $css | minify | fingerprint }}
+{{ end }}
+
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+<link rel="canonical" href="{{ .Permalink }}" />
+
+{{ with .Params.description }}
+<meta name="description" content="{{ . }}" />
+{{ end }}
+
+{{ if .Params.noindex }}
+<meta name="robots" content="noindex" />
+{{ else }}
+<meta content="index, follow" name="robots" />
+{{ end }}
+
+{{ if and (not hugo.IsServer) .Site.Params.useGoogleAnalytics }}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+{{ end }}

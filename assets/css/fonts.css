@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "IM Fell English Subset";
+  src: url('path-to-optimized-lato.woff2') format('woff2'),
+       url('path-to-optimized-lato.woff') format('woff');
+  unicode-range: U+65-90, U+97-122;
+}
+
+
+.fonts-loaded-1 body {
+  font-family: "IM Fell English Subset";
+}
+
+.fonts-loaded-2 body {
+  font-family: "IM Fell English";
+}

@@ -1,0 +1,22 @@
+  <nav class="flex flex-row justify-center">
+    {{ $logo := resources.Get "images/nsa-logo-blackletter-lgj.svg" }}
+    <img src="{{ $logo.RelPermalink }}" width="300" height="100" class="p-2" alt="No Such Animal">
+    {{- with index site.Menus "main" }}
+    <ul>
+    {{ debug.Dump . }}
+
+    {{- range .menuEntries }}
+        <li>
+            <a href="{{ .RelPermalink }}">{{ .name }}</a>
+            {{- with .Children }}
+                <ul>
+                  {{- range .Children }}
+                  <li>{{ . }}</li>
+                  {{- end }}
+                </ul>
+            {{- end }}
+        </li>
+    {{- end }}
+    </ul>
+    {{- end }}
+  </nav>
