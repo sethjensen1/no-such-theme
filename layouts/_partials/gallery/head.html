@@ -1,0 +1,11 @@
+{{ $gallerycss := resources.Get "css/gallery.css" }}
+
+{{ if not hugo.IsServer }}
+{{ $gallerycss := $gallerycss | minify | fingerprint }}
+{{ end }}
+
+<link rel="stylesheet" href="{{ $gallerycss.RelPermalink }}" integrity="{{ $gallerycss.Data.Integrity }}">
+
+{{ $galleryjs := resources.Get "js/gallery.js" }}
+
+<script defer async src="{{ $galleryjs.RelPermalink }}"></script>
