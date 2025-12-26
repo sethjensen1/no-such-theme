@@ -5,11 +5,12 @@
 {{ $title := printf "%s | %s" (or .Title .Params.name) .Site.Title }}
 <title>{{ $title }}</title>
 
+{{ partial "fonts.html" . }}
+
 <!-- Tailwind output -->
 {{ $css := resources.Get "css/output.css" }}
 
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-<!-- <link rel="preload" href="path-to-roman-subset.woff2" as="font" type="font/woff2" crossorigin> -->
 
 <link rel="canonical" href="{{ .Permalink }}" />
 

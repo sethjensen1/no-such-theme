@@ -2,7 +2,7 @@
 
 @theme {
     --font-header: "Grenze", ui-sans-serif, sans-serif;
-    --font-serif: "IM Fell English", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --font-serif: "IMFellEnglish", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 main p {
