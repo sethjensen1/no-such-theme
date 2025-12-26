@@ -1,6 +1,6 @@
-<!DOCTYPE html>    
-<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">    
-<head>    
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
 {{- if .HasShortcode "gallery" }}
 {{ partial "gallery/head.html" . }}
 {{- end }}
@@ -13,7 +13,7 @@
   <main class="flex flex-col justify-center items-center">
     {{ block "main" . }}{{ end }}
   </main>
-  <footer>
+  <footer class="flex flex-row justify-center py-5">
     {{ partial "footer.html" . }}
   </footer>
 </body>

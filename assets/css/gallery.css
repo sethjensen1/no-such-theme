@@ -9,27 +9,17 @@
  * https://www.bram.us/2020/07/28/simple-image-gallery-with-display-grid-and-object-fit-cover/
  */
 
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
-html {
-	scroll-behavior: smooth;
-}
-
 ul.gallery {
 	--numcolumns: 4;
 	--gap: 0.25em;
 	--size: calc(100vw / var(--numcolumns));
 	display: grid;
 	grid-template-columns: repeat(var(--numcolumns), 1fr);
-	
+
 	grid-template-rows: auto;
 	gap: var(--gap);
 	align-items: stretch;
-	
+
 	list-style: none;
 }
 
@@ -126,4 +116,4 @@ ul.gallery > li:target > a.zoomout::after {
 	font-size: 1rem;
 	color: #fff;
 	z-index: 12;
-} 
+}
