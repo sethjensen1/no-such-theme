@@ -1,0 +1,16 @@
+{{/*
+data_key parameter: name of file in the `data` folder (after being parsed by Hugo, so no file ending) with a `video_id` set to the YouTube video ID and `songs` set to a list of songs, each with a `title`, `art` file, and `audio` file
+*/}}
+
+{{ $data := index .Site.Data (.Get "data_key") }}
+
+<div class="flex my-3 flex-col flex-wrap lg:flex-row lg:flex-nowrap items-center max-w-1/1 lg:min-w-4xl">
+  <div class="flex flex-col items-center justify-center w-1/1 lg:w-1/2">
+    <iframe class="min-w-9/10 max-w-1/1 min-h-2xl" width="400" height="225" src="https://www.youtube-nocookie.com/embed/{{ $data.video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <div class="flex flex-col items-center justify-center w-1/1 lg:w-1/2">
+    {{ range $data.songs }}
+    {{ partial "songplayer" . }}
+    {{ end }}
+  </div>
+</div>
