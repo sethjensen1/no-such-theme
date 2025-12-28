@@ -5,6 +5,10 @@
     --font-serif: "IMFellEnglish", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
+a {
+  @apply text-rose-400;
+}
+
 main p {
     @apply text-xl my-3 max-w-3xl justify-self-center;
 }
