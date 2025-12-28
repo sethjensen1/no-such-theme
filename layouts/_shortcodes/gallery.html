@@ -12,7 +12,7 @@ Params:
 {{/* TODO: Generate thumbnails */}}
 {{- $images := resources.Match (printf "%s/*.jpg" $trimmed_resource_folder) }}
 
-<ul class="gallery">
+<ul class="my-3 gallery">
     {{- range $index, $image := $images }}
 	<li id="image-{{ $index }}" class="wide">
         <a href="#image-{{ $index }}" class="zoomin" title="Zoom In"><img width="{{ $image.Width }}" height="{{ $image.Height }}" src="{{ $image.RelPermalink }}" alt="" title="" loading="lazy" /></a>
