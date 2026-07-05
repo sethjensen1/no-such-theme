@@ -9,6 +9,18 @@ a {
   @apply text-rose-400;
 }
 
+body {
+}
+
+main {
+  display: grid;
+  grid-template-columns: [full-start] 1fr [main-start] minmax(0, var(--container-3xl)) [main-end] 1fr [full-end];
+}
+
+:where(main > *) {
+  grid-column: main;
+}
+
 main p {
     @apply text-xl my-3 max-w-3xl justify-self-center;
 }
@@ -39,4 +51,9 @@ h5 {
 
 h6 {
     @apply text-lg;
+}
+
+.img-link-filter:hover {
+  /* Transform black to #eb483c. Generated at https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(33%) sepia(51%) saturate(1751%) hue-rotate(333deg) brightness(105%) contrast(94%);
 }

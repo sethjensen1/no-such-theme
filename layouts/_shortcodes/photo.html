@@ -1,0 +1,12 @@
+{{/*
+src parameter: path to photo asset
+*/}}
+
+{{ $photo := resources.Get (.Get "src") }}
+
+
+<div style="grid-column: full;" class="bg-cover">
+  {{ with $photo }}
+  <img src="{{ .RelPermalink }}">
+  {{ end }}
+</div>

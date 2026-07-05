@@ -4,7 +4,7 @@
     {{ if and (not (eq $icon.MediaType.SubType "svg")) $icon }}
     {{ $icon = $icon.Resize "60x webp q100" }}
     {{ end }}
-    <a href="{{ .link }}" class="mr-3 overflow-clip flex flex-col justify-center">
+    <a href="{{ .link }}" class="mr-3 overflow-clip flex flex-col justify-center img-link-filter hover:hue-rotate-90">
         <img width="30" height="30" src="{{ and $icon $icon.RelPermalink }}" alt="{{ .name }}">
     </a>
     {{- end }}
