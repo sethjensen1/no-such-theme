@@ -21,8 +21,12 @@ main {
   grid-column: main;
 }
 
-main p {
+main p, footer p {
     @apply text-xl my-3 max-w-3xl justify-self-center;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  @apply px-3 lg:px-0;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -1,3 +1,14 @@
-<div>
-    <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=120705411/size=large/bgcol=333333/linkcol=e32c14/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://nosuchanimal.bandcamp.com/album/im-not-angry-youre-angry">I&#39;m Not Angry, You&#39;re Angry by No Such Animal</a></iframe>
+{{/*
+photo parameter: path to photo asset
+*/}}
+
+{{ $photo := resources.Get (.Get "photo") }}
+
+<div class="flex flex-col items-center gap-2">
+  {{ with $photo }}
+  <img class="max-h-100 max-w-9/10 w-auto" width="500" src="{{ .RelPermalink }}">
+  {{ end }}
+  <div class="max-w-9/10">
+    <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=120705411/size=large/bgcol=ffffff/linkcol=de270f/tracklist=false/artwork=none/transparent=true/" seamless><a href="https://nosuchanimal.bandcamp.com/album/im-not-angry-youre-angry">I&#39;m Not Angry, You&#39;re Angry by No Such Animal</a></iframe>
+  </div>
 </div>

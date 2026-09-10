@@ -8,12 +8,14 @@ resource_folder: glob pointing to images folder relative to `assets` directory (
 
 {{- $images := resources.Match (printf "%s/*.{jpg,jpeg,png,webp}" $trimmed_resource_folder) }}
 
-<ul class="my-3 gallery">
-  {{- range $index, $image := $images }}
-  {{- $thumbnail := $image.Resize "800x webp q85" }}
-  <li id="image-{{ $index }}">
-    <a href="#image-{{ $index }}" class="zoomin" title="Zoom In"><img width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" alt="" title="" loading="lazy" /></a>
-    <a href="#close" class="zoomout" title="Zoom Out" autofocus="true"><img width="{{ $image.Width }}" height="{{ $image.Height }}" src="{{ $image.RelPermalink }}" alt="" title="" loading="lazy" /></a>
-  </li>
-  {{- end }}
-</ul>
+<div style="grid-column: full">
+  <ul class="my-3 mx-auto gallery">
+    {{- range $index, $image := $images }}
+    {{- $thumbnail := $image.Resize "800x webp q85" }}
+    <li id="image-{{ $index }}">
+      <a href="#image-{{ $index }}" class="zoomin" title="Zoom In"><img width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" alt="" title="" loading="lazy" /></a>
+      <a href="#close" class="zoomout" title="Zoom Out" autofocus="true"><img width="{{ $image.Width }}" height="{{ $image.Height }}" src="{{ $image.RelPermalink }}" alt="" title="" loading="lazy" /></a>
+    </li>
+    {{- end }}
+  </ul>
+</div>
