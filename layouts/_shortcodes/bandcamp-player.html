@@ -4,7 +4,7 @@ photo parameter: path to photo asset
 
 {{ $photo := resources.Get (.Get "photo") }}
 
-<div class="flex flex-col items-center gap-2">
+<div class="flex flex-col items-center gap-2 my-2">
   {{ with $photo }}
   <img class="max-h-100 max-w-9/10 w-auto" width="500" src="{{ .RelPermalink }}">
   {{ end }}
