@@ -1,0 +1,7 @@
+{{ $showcasejs := resources.Get "js/musicshowcase.js" }}
+
+{{ if not hugo.IsServer }}
+{{ $showcasejs = $showcasejs | minify | fingerprint }}
+{{ end }}
+
+<script defer async src="{{ $showcasejs.RelPermalink }}"></script>

@@ -8,7 +8,7 @@ data_key parameter: name of file in the `data` folder (after being parsed by Hug
   <div class="flex flex-col items-center justify-center w-1/1">
     <iframe class="min-w-9/10 max-w-1/1 min-h-2xl" width="400" height="300" src="https://www.youtube-nocookie.com/embed/{{ $data.video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
-  <div class="flex flex-col items-center justify-center w-1/1">
+  <div id="songplayer" class="flex flex-col items-center justify-center w-1/1">
     {{ range $data.songs }}
     {{ partial "songplayer" . }}
     {{ end }}

@@ -4,6 +4,9 @@
 {{- if .HasShortcode "gallery" }}
 {{ partial "gallery/head.html" . }}
 {{- end }}
+{{- if .HasShortcode "musicshowcase" }}
+{{ partial "musicshowcase/head.html" . }}
+{{- end }}
 {{ partial "head.html" . }}
 </head>
 {{ $bg := resources.Get "images/background.png" }}

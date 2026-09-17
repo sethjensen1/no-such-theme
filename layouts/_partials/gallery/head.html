@@ -8,4 +8,8 @@
 
 {{ $galleryjs := resources.Get "js/gallery.js" }}
 
+{{ if not hugo.IsServer }}
+{{ $galleryjs = $galleryjs | minify | fingerprint }}
+{{ end }}
+
 <script defer async src="{{ $galleryjs.RelPermalink }}"></script>
