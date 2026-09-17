@@ -1,5 +1,5 @@
 <div class="flex flex-row pb-2">
-    {{- range .Site.Data.social_links }}
+    {{- range hugo.Data.social_links }}
     {{ $icon := resources.Get .icon }}
     {{ if and (not (eq $icon.MediaType.SubType "svg")) $icon }}
     {{ $icon = $icon.Resize "60x webp q100" }}

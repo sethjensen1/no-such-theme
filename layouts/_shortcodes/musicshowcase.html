@@ -2,7 +2,7 @@
 data_key parameter: name of file in the `data` folder (after being parsed by Hugo, so no file ending) with a `video_id` set to the YouTube video ID and `songs` set to a list of songs, each with a `title`, `art` file, and `audio` file
 */}}
 
-{{ $data := index .Site.Data (.Get "data_key") }}
+{{ $data := index hugo.Data (.Get "data_key") }}
 
 <div style="" class="flex my-3 flex-col flex-wrap items-center max-w-1/1">
   <div class="flex flex-col items-center justify-center w-1/1">
