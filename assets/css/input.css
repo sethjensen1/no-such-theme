@@ -16,7 +16,7 @@ body {
 }
 
 .body-bg {
-  background-size: cover;
+  background-size: 140%;
   background-position: center top 0%;
 
   @media (width >= theme(--breakpoint-lg)) {
