@@ -14,6 +14,10 @@
 <!-- Tailwind output -->
 {{ $css := resources.Get "css/output.css" }}
 
+{{ if not hugo.IsServer }}
+{{ $css = $css | minify | fingerprint }}
+{{ end }}
+
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 
 <link rel="canonical" href="{{ .Permalink }}" />
