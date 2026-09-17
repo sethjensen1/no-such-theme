@@ -6,10 +6,22 @@
 }
 
 a {
-  @apply text-rose-400;
+  @apply text-red-500;
+  &:hover {
+    @apply text-red-600;
+  }
 }
 
 body {
+}
+
+.body-bg {
+  background-size: cover;
+  background-position: center top 0%;
+
+  @media (width >= theme(--breakpoint-lg)) {
+    background-size: contain;
+  }
 }
 
 main {

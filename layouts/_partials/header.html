@@ -1,8 +1,6 @@
   <nav class="flex flex-row justify-center">
-    {{ $logo := resources.Get "images/nsa-logo-blackletter-lgj.svg" }}
-    <a href="/">
-      <img src="{{ $logo.RelPermalink }}" width="300" height="100" class="p-2" alt="No Such Animal">
-    </a>
+    {{ $logo := resources.Get "images/website-header.svg" }}
+    <img src="{{ $logo.RelPermalink }}" width="1000" height="100" class="p-2" alt="No Such Animal">
     {{- with index site.Menus "main" }}
     <ul>
     {{- range .menuEntries }}
