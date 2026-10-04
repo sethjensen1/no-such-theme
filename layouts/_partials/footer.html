@@ -10,4 +10,14 @@
     {{- end }}
 </div>
 <p>Contact us at nosuchanimal dot theband at gmail dot com</p>
+<ul class="flex flex-row">
+  <li class="px-2">
+    <a href="/">Home</a>
+  </li>
+  {{- range .Site.RegularPages }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+  {{- end }}
+</ul>
 <p>© {{ now.Year }} No Such Animal. Website by Seth Jensen.</p>
